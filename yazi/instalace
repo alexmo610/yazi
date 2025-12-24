@@ -1,0 +1,10 @@
+#!/bin/bash
+sudo pacman -S ytdlp-gui
+sudo pacman -S encfs xsel
+paru dysk
+sudo pacman -S grsync gufw clipgrab fd neovim mpv
+sudo pacman -S newsboat
+sudo pacman -S flameshot
+sudo pacman -S wine libreoffice
+sudo pacman -S w3m lazygit
+paru mocp
