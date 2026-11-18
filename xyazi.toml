@@ -1,0 +1,81 @@
+[manager]
+ratio = [1, 2, 3]
+sort_by = "size"
+sort_sensitive = false
+sort_reverse = true
+sort_dir_first = true
+sort_translit = false
+linemode = "none"
+show_hidden = false
+show_symlink = true
+scrolloff = 5
+mouse_events = ["click", "scroll"]
+# title_format = "Yazi: {cwd}"
+
+[preview]
+wrap = "no"
+tab_size = 2
+max_width = 1000
+max_height = 1200
+cache_dir = ""
+image_delay = 30
+image_filter = "triangle"
+image_quality = 75
+sixel_fraction = 15
+ueberzug_scale = 1
+ueberzug_offset = [0, 0, 0, 0]
+
+
+#sort_sensitive = false
+#sort_reverse   = false
+#show_hidden    = true
+#show_symlink   = true
+
+[opener]
+# Definice programů (zde si přidejte své oblíbené)
+edit   = [
+	{ run = '${EDITOR:-nvim} "$@"', block = true, desc = "Editor" }
+]
+open   = [
+	{ run = 'xdg-open "$@"', desc = "Systémové otevření" }
+]
+reveal = [
+	{ run = '''exiftool "$@" | less''', block = true, desc = "Exif data" }
+]
+images = [
+	{ run = 'sxiv -a "$@"', desc = "Prohlížeč obrázků (sxiv)" }
+]
+
+[open]
+rules = [
+	# Pravidlo pro složky
+	{ mime = "inode/directory", use = ["open", "reveal"] },
+	# Textové soubory
+	{ mime = "text/*", use = ["edit", "open"] },
+
+	# Obrázky (Oprava vaší chyby: musí tu být mime nebo name)
+	{ mime = "image/*", use = ["images", "reveal", "open"] },
+
+	# Videa a Audio
+	{ mime = "{video,audio}/*", use = ["open", "reveal"] },
+
+	# PDF a dokumenty
+	{ mime = "application/pdf", use = ["open", "reveal"] },
+
+	# Zbytek (univerzální pravidlo na konci)
+	{ mime = "*", use = ["open", "reveal"] }
+]
+
+
+
+[plugin]
+# Zde se definují náhledy (pokud máte nainstalované doplňky)
+previewers = [
+  { mime = "inode/directory", run = "folder" },
+  # { name = "*/", run = "folder", sync = true },
+	{ url = "*.nm7", run = "archive" },
+	{ mime = "text/*", run = "code" },
+	{ mime = "image/*", run = "image" },
+	{ mime = "video/*", run = "video" },
+	{ mime = "application/pdf", run = "pdf" },
+]

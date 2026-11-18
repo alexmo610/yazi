@@ -1,0 +1,57 @@
+ratio = [3, 4, 8]
+
+[plugin]
+  append_previewers = [
+    { url = "*", run = "file-extra-metadata" },
+  ]
+
+  # Setup keybind for spotter: https://github.com/sxyazi/yazi/pull/1802
+  append_spotters = [
+    { url = "*", run = "file-extra-metadata" },
+  ]
+# Setup keybind for spotter: https://github.com/sxyazi/yazi/pull/1802
+  spotters = [
+    # ... the rest
+    # Fallback
+    # { name = "*", run = "file" },
+    { url = "*", run = "file-extra-metadata" },
+  ]
+[preview]
+max_width = 1600
+max_height = 1600
+
+[opener]
+edit = [
+    { run = 'nvim %s1', block = true, for = "unix" }
+]
+
+image = [
+    { run = 'nomacs %s1', orphan = true, for = "unix" }
+]
+
+video = [
+    { run = 'mpv %s1', orphan = true, for = "unix" }
+]
+
+pdf = [
+    { run = 'okular %s1', orphan = true, for = "unix" }
+]
+
+audio = [
+    { run = 'strawberry %s1', orphan = true, for = "unix" }
+]
+
+archive = [
+    { run = 'ark %s1', orphan = true, for = "unix" }
+]
+
+[open]
+rules = [
+    { mime = "inode/x-empty", use = "edit" },
+    { mime = "text/*", use = "edit" },
+    { mime = "image/*", use = "image" },
+    { mime = "video/*", use = "video" },
+    { mime = "application/pdf", use = "pdf" },
+    { mime = "audio/*", use = "audio" },
+    { mime = "application/zip", use = "archive" }
+]

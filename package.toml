@@ -1,0 +1,17 @@
+[[plugin.deps]]
+use = "uhs-robert/sshfs"
+rev = "2a10f73"
+hash = "9bc5b0969bb16a9dc4b5cc0e62a25ce4"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:rclone"
+rev = "9166202"
+hash = "73e5eb0a860f933c4e664dad79ef2676"
+
+[[plugin.deps]]
+use = "boydaihungst/file-extra-metadata"
+rev = "98baba6"
+hash = "c5292f37d73d0a8f301cc138a51baedf"
+
+[flavor]
+deps = []

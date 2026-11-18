@@ -1,0 +1,34 @@
+[opener]
+edit = [
+    { run = 'nvim %s1', block = true, for = "unix" }
+]
+
+image = [
+    { run = 'nomacs %s1', orphan = true, for = "unix" }
+]
+
+video = [
+    { run = 'mpv %s1', orphan = true, for = "unix" }
+]
+
+pdf = [
+    { run = 'okular %s1', orphan = true, for = "unix" }
+]
+
+audio = [
+    { run = 'strawberry %s1', orphan = true, for = "unix" }
+]
+
+archive = [
+    { run = 'ark %s1', orphan = true, for = "unix" }
+]
+
+[open]
+rules = [
+    { mime = "text/*", use = "edit" },
+    { mime = "image/*", use = "image" },
+    { mime = "video/*", use = "video" },
+    { mime = "application/pdf", use = "pdf" },
+    { mime = "audio/*", use = "audio" },
+    { mime = "application/zip", use = "archive" }
+]
